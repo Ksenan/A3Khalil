@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #0074D9;
+            --secondary-color: #FF4136;
+            --text-color: #333;
+            --background-color: #f0f0f0;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Two columns: 1/3 and 2/3 of available space */
+            gap: 20px; /* Gap between grid items */
+            min-height: 100vh;
+            background-color: var(--background-color);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styles for screens smaller than 600px (mobile) */
+        @media screen and (max-width: 600px) {
+            body {
+                grid-template-columns: 1fr; /* One column layout */
+            }
+        }
+
+        /* Styles for screens between 600px and 900px (tablet) */
+        @media screen and (min-width: 600px) and (max-width: 900px) {
+            body {
+                grid-template-columns: 1fr 1fr; /* Two equal columns */
+            }
+        }
+
+        /* Styles for screens larger than 900px (desktop) */
+        @media screen and (min-width: 900px) {
+            body {
+                grid-template-columns: 1fr 2fr 1fr; /* Three columns: 1/4, 1/2, 1/4 of available space */
+            }
+        }
+
+        /* Grid item styles */
+        section {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: antiquewhite;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            animation: fadeIn 1s ease-out; /* Adding fade-in animation */
+        }
+
+        h3 {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        /* Additional styles for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Styles for color changer buttons */
+        button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+<section>
+    <p>All of what I'm proud of</p>
+    <ol>
+        <li>National Champions Soccer 2021</li>
+        <li>Concourt Art Oratoire 1st place</li>
+        <li>Provincial Soccer Champions 2022</li>
+        <li>Many other things</li>
+    </ol>
+    <img src="soccer.JPG" alt="My team after becoming Provincial Champs" width="500" height="500">
+</section>
+<section>
+    <table>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+        </tr>
+        <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+        </tr>
+    </table>
+</section>
+<button id="colorScheme1">Color Scheme 1</button>
+<button id="colorScheme2">Color Scheme 2</button>
+<button id="colorScheme3">Color Scheme 3</button>
+<script>
+    document.getElementById('colorScheme1').addEventListener('click', function() {
+        document.documentElement.style.setProperty('--primary-color', '#0074D9');
+        document.documentElement.style.setProperty('--secondary-color', '#FF4136');
+        document.documentElement.style.setProperty('--text-color', '#333');
+        document.documentElement.style.setProperty('--background-color', '#f0f0f0');
+    });
+
+    document.getElementById('colorScheme2').addEventListener('click', function() {
+        document.documentElement.style.setProperty('--primary-color', '#2ECC40');
+        document.documentElement.style.setProperty('--secondary-color', '#FFDC00');
+        document.documentElement.style.setProperty('--text-color', '#333');
+        document.documentElement.style.setProperty('--background-color', '#f5f5f5');
+    });
+
+    document.getElementById('colorScheme3').addEventListener('click', function() {
+        document.documentElement.style.setProperty('--primary-color', '#FF851B');
+        document.documentElement.style.setProperty('--secondary-color', '#7FDBFF');
+        document.documentElement.style.setProperty('--text-color', '#333');
+        document.documentElement.style.setProperty('--background-color', '#e0e0e0');
+    });
+</script>
+</body>
+</html>
+

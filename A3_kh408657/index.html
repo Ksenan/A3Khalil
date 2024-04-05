@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Two columns: 1/3 and 2/3 of available space */
+            gap: 20px; /* Gap between grid items */
+            min-height: 100vh;
+            background-color: grey;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s; /* Add transition for smooth color change */
+        }
+
+        /* Styles for dark mode */
+        .dark-mode {
+            background-color: #333; /* Change background color for dark mode */
+            color: #fff; /* Change text color for dark mode */
+        }
+
+        /* Flexbox container styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: antiquewhite;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        /* Additional styling for other elements (e.g., links, headings) */
+        h1 {
+            color: #0074D9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FF4136;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #FF851B;
+        }
+    </style>
+</head>
+<body>
+<h1>Khalil Senan</h1>
+<p>Hello, my name is Khalil. Welcome to my website!</p>
+<img src="me2.JPG" alt="picture of me with my friends" width="500" height="500">
+<section>
+    <a id="Me" href="AboutMe.html">Learn more about me!</a>
+    <a id="Achieve" href="Achieve.html">What I have accomplished</a>
+</section>
+<button id="darkModeToggle">Toggle Dark Mode</button>
+<script>
+    window.alert("This website is not fully finished");
+    const link = document.getElementById('Me');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('click', () => {
+        // Toggle dark mode class on body
+        const isDarkMode = body.classList.toggle('dark-mode');
+
+        // Save the user's preference to local storage
+        localStorage.setItem('darkMode', isDarkMode);
+
+        // Change button color based on dark mode state
+        darkModeToggle.style.backgroundColor = isDarkMode ? '#fff' : '#333';
+        darkModeToggle.style.color = isDarkMode ? '#333' : '#fff';
+
+        // Change background color of body based on dark mode state
+        body.style.backgroundColor = isDarkMode ? '#333' : 'antiquewhite';
+    });
+
+    // Check if dark mode preference is saved in local storage
+    const isDarkMode = localStorage.getItem('darkMode');
+    if (isDarkMode === 'true') {
+        body.classList.add('dark-mode');
+        darkModeToggle.style.backgroundColor = '#fff';
+        darkModeToggle.style.color = '#333';
+        body.style.backgroundColor = '#333';
+    }
+
+    link.addEventListener("mouseover", () => {
+        link.style.color = 'blue';
+    });
+    link.addEventListener('mouseout', () => {
+        link.style.color = ''; // Reset to default color
+    });
+</script>
+</body>
+</html>
+

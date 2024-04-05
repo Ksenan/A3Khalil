@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Two columns: 1/3 and 2/3 of available space */
+            gap: 20px; /* Gap between grid items */
+            min-height: 100vh;
+            background-color: grey;
+            font-family: Arial, sans-serif;
+        }
+        /* Styles for screens smaller than 600px (mobile) */
+        @media screen and (max-width: 600px) {
+            body {
+                grid-template-columns: 1fr; /* One column layout */
+            }
+        }
+        /* Styles for screens between 600px and 900px (tablet) */
+        @media screen and (min-width: 600px) and (max-width: 900px) {
+            body {
+                grid-template-columns: 1fr 1fr; /* Two equal columns */
+            }
+        }
+        /* Styles for screens larger than 900px (desktop) */
+        @media screen and (min-width: 900px) {
+            body {
+                grid-template-columns: 1fr 2fr 1fr; /* Three columns: 1/4, 1/2, 1/4 of available space */
+            }
+        }
+        /* Grid item styles */
+        section {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: antiquewhite;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #0074D9;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-out; /* Adding fade-in animation */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h3 {
+            color: #0074D9;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        audio {
+            width: 100%;
+        }
+        /* Form styles */
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #0074D9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <img src="me.jpg" alt="A picture of me">
+    <img src="JIM.JPG" alt="Picture of me at the gym">
+    <img src="kenybatman.JPG" alt="Picture of my friend Keny">
+    <p>Hello, my name is Khalil. I am a first-year student at Dal in BACS. I was born in Montreal, Canada, in 2004 and lived there for 10 years before moving to Halifax and finishing school there.</p>
+</section>
+<section>
+    <h3>Things I Like</h3>
+    <ul>
+        <li>Soccer</li>
+        <li>Video Games</li>
+        <li>Cooking</li>
+        <li>Socializing</li>
+        <li>Going to the gym</li>
+        <li>Boxing</li>
+        <li>My friends!</li>
+    </ul>
+</section>
+<section>
+    <h3>Contact Me</h3>
+    <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span id="nameError" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error"></span>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+        <span id="phoneError" class="error"></span>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span id="messageError" class="error"></span>
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<script>
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const messageInput = document.getElementById('message');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const messageError = document.getElementById('messageError');
+
+    form.addEventListener('submit', function(event) {
+        let isValid = true;
+
+        // Name validation
+        if (nameInput.value === '') {
+            nameError.textContent = 'Please enter your name.';
+            isValid = false;
+        } else {
+            nameError.textContent = '';
+        }
+
+        // Email validation
+        if (!emailInput.value.includes('@gmail') && !emailInput.value.includes('@outlook')) {
+            emailError.textContent = 'Please enter a valid Gmail or Outlook email address.';
+            isValid = false;
+        } else {
+            emailError.textContent = '';
+        }
+
+        // Phone validation
+        if (!/^\d{3}-\d{3}-\d{4}$/.test(phoneInput.value)) {
+            phoneError.textContent = 'Please enter a valid phone number in the format XXX-XXX-XXXX.';
+            isValid = false;
+        } else {
+            phoneError.textContent = '';
+        }
+
+        // Message validation
+        if (messageInput.value === '') {
+            messageError.textContent = 'Please enter a message.';
+            isValid = false;
+        } else {
+            messageError.textContent = '';
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if there are errors
+        }
+    });
+</script>
+</body>
+</html>
+
+
